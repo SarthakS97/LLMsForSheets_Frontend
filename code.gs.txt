@@ -1,0 +1,92 @@
+function onInstall(e) {
+  onOpen(e);
+}
+
+function onOpen(e) {
+  
+  SpreadsheetApp.getUi()
+    .createAddonMenu()
+    .addItem('Configure', 'showSidebar')
+    .addToUi();
+}
+
+function showSidebar() {
+  const htmlOutput = HtmlService.createHtmlOutputFromFile('sidebar')
+    .setTitle('Enter your Replicate API key')
+    .setWidth(300);
+
+  SpreadsheetApp.getUi().showSidebar(htmlOutput);
+}
+
+function saveText(text) {
+  var userProperties = PropertiesService.getUserProperties();
+  var text1 = userProperties.setProperty('savedText', text);
+  Logger.log(text1.getProperty("savedText"))
+}
+
+
+function open(input) {
+  var userProperties = PropertiesService.getUserProperties();
+
+  const payload = {
+    input: input,
+    text: userProperties.getProperty("savedText")
+  };
+  const options = {
+    method: 'post',
+    payload: JSON.stringify(payload),
+    contentType: 'application/json',
+    muteHttpExceptions: true
+  };
+
+  const response = UrlFetchApp.fetch('https://kind-pear-camel-toga.cyclic.app/open', options);
+  var res = response.getContentText()
+  var resp = JSON.parse(res)
+  return resp["message"]
+
+}
+
+function vicuna(input) {
+  var userProperties = PropertiesService.getUserProperties();
+
+  const payload = {
+    input: input,
+    text: userProperties.getProperty("savedText")
+  };
+  const options = {
+    method: 'post',
+    payload: JSON.stringify(payload),
+    contentType: 'application/json',
+    muteHttpExceptions: true
+  };
+
+  const response = UrlFetchApp.fetch('https://kind-pear-camel-toga.cyclic.app/vicuna', options);
+  var res = response.getContentText()
+  var resp = JSON.parse(res)
+  return resp["message"]
+
+}
+
+function dolly(input) {
+  var userProperties = PropertiesService.getUserProperties();
+
+  const payload = {
+    input: input,
+    text: userProperties.getProperty("savedText")
+  };
+  const options = {
+    method: 'post',
+    payload: JSON.stringify(payload),
+    contentType: 'application/json',
+    muteHttpExceptions: true
+  };
+
+  const response = UrlFetchApp.fetch('https://kind-pear-camel-toga.cyclic.app/dolly', options);
+  var res = response.getContentText()
+  var resp = JSON.parse(res)
+  return resp["message"]
+
+}
+
+
+

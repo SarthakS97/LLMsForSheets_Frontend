@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+  <body>
+    <script>
+  function saveText() {
+    const text = document.getElementById('textarea').value;
+    google.script.run.saveText(text);
+  }
+</script>
+<input type="password" id="textarea" rows="4" cols="30"><br>
+<button onclick="saveText()">Save</button>
+
+  </body>
+</html>
