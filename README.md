@@ -15,3 +15,5 @@ That's it! You can now use Dolly, Vicuna and Open Assistant in your sheet.
 - Dolly: =dolly({prompt})
 - Vicuna: =vicuna({prompt})
 - Open Assistant: =open({prompt})
+
+## When you use the formulas for the first time you'll get a timeout error. To avoid this run the models in Replicate.com first and then use the formulas
