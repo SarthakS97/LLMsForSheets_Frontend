@@ -11,6 +11,7 @@ You should see LLM under Extenions. Click on LLM and click configure. Paste your
 
 That's it! You can now use Dolly, Vicuna and Open Assistant in your sheet. 
 
-- To use dolly use the formula: =dolly({prompt})
-- To use vicuna use: =vicuna({prompt})
-- To use Open Assistant: open({prompt})
+## Use the following formula in the cell you want the output in
+- Dolly: =dolly({prompt})
+- Vicuna: =vicuna({prompt})
+- Open Assistant: =open({prompt})
